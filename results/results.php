@@ -4,11 +4,8 @@ require('../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 
 session_start();
-<<<<<<< HEAD
 include '../includes/header.php';
 
-=======
->>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
 $electionID = $_POST["election"];
 if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $req = $bdd->prepare('SELECT * FROM candidate_election as CE, candidate as C, election as E 

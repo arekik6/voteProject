@@ -4,11 +4,7 @@ require('../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 
 session_start();
-<<<<<<< HEAD
 include '../includes/header.php';
-=======
-
->>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
 $candidate = $_POST["candidate"];
 if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
 

@@ -3,11 +3,8 @@ var count = 1;
 function addCandidate()
 {
     var contact = document.getElementById('contact');
-<<<<<<< HEAD
-=======
     var submit = document.getElementById('contact-submit');
 
->>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
     if (contact)
     {
             // Create a new <p> element
@@ -52,16 +49,6 @@ function addCandidate()
 
             if (newFirst && newP)   
             {
-<<<<<<< HEAD
-                contact.appendChild(newP);
-                contact.appendChild(newFirst);
-                contact.appendChild(newLast);
-                contact.appendChild(newEmail);
-                contact.appendChild(newTel);
-                contact.appendChild(newAddress);
-                contact.appendChild(newDesc);
-                contact.appendChild(newImg);
-=======
                 contact.insertBefore(newP,contact.lastChild);
                 contact.insertBefore(newFirst,contact.lastChild);
                 contact.insertBefore(newLast,contact.lastChild);
@@ -70,7 +57,6 @@ function addCandidate()
                 contact.insertBefore(newAddress,contact.lastChild);
                 contact.insertBefore(newDesc,contact.lastChild);
                 contact.insertBefore(newImg,contact.lastChild);
->>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
                 count++;
             }
 
