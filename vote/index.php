@@ -37,7 +37,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
     }
 }
 else{
-    header("Location: ./login");
+    header("Location: ../login");
 }
     
 ?>
