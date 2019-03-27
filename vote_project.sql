@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2019 at 01:54 AM
+-- Generation Time: Mar 27, 2019 at 05:11 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -36,8 +36,16 @@ CREATE TABLE `candidate` (
   `email` varchar(20) NOT NULL,
   `img` varchar(200) NOT NULL,
   `tel` varchar(12) NOT NULL,
-  `description` varchar(200) NOT NULL
+  `C_description` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `candidate`
+--
+
+INSERT INTO `candidate` (`id`, `firstName`, `lastName`, `address`, `email`, `img`, `tel`, `C_description`) VALUES
+(1, 'foulen', 'fleni', 'sfax', 'aa@aa', 'aaa', '55555555', 'metracha7'),
+(2, 'flen 1', 'fouleni 1', 'amdin', 'are@gmail.com', 'aaa', '555555555', 'aaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -48,8 +56,17 @@ CREATE TABLE `candidate` (
 CREATE TABLE `candidate_election` (
   `id_Candidate` int(11) NOT NULL,
   `id_Election` int(11) NOT NULL,
-  `vote_number` int(11) NOT NULL
+  `vote_number` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `candidate_election`
+--
+
+INSERT INTO `candidate_election` (`id_Candidate`, `id_Election`, `vote_number`) VALUES
+(1, 2, 0),
+(2, 1, 4),
+(2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -59,7 +76,7 @@ CREATE TABLE `candidate_election` (
 
 CREATE TABLE `election` (
   `id` int(11) NOT NULL,
-  `nom` varchar(10) NOT NULL,
+  `nom` varchar(30) NOT NULL,
   `description` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,7 +85,7 @@ CREATE TABLE `election` (
 --
 
 INSERT INTO `election` (`id`, `nom`, `description`) VALUES
-(1, 'Présidenti', 'Election Présidentielle'),
+(1, 'Présidentielle ', 'Election Présidentielle'),
 (2, 'Parliment', 'Election du Parliment');
 
 -- --------------------------------------------------------
@@ -151,7 +168,7 @@ ALTER TABLE `vote`
 -- AUTO_INCREMENT for table `candidate`
 --
 ALTER TABLE `candidate`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `election`
