@@ -3,6 +3,8 @@ var count = 1;
 function addCandidate()
 {
     var contact = document.getElementById('contact');
+    var submit = document.getElementById('contact-submit');
+
     if (contact)
     {
             // Create a new <p> element
@@ -47,14 +49,14 @@ function addCandidate()
 
             if (newFirst && newP)   
             {
-                contact.appendChild(newP);
-                contact.appendChild(newFirst);
-                contact.appendChild(newLast);
-                contact.appendChild(newEmail);
-                contact.appendChild(newTel);
-                contact.appendChild(newAddress);
-                contact.appendChild(newDesc);
-                contact.appendChild(newImg);
+                contact.insertBefore(newP,contact.lastChild);
+                contact.insertBefore(newFirst,contact.lastChild);
+                contact.insertBefore(newLast,contact.lastChild);
+                contact.insertBefore(newEmail,contact.lastChild);
+                contact.insertBefore(newTel,contact.lastChild);
+                contact.insertBefore(newAddress,contact.lastChild);
+                contact.insertBefore(newDesc,contact.lastChild);
+                contact.insertBefore(newImg,contact.lastChild);
                 count++;
             }
 
