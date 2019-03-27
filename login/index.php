@@ -1,4 +1,4 @@
-(<?php
+<?php
 session_start();
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
@@ -7,7 +7,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 	else{
 		header("Location: ../elections.php");
 	}
-})
+}
 
 ?>
 
