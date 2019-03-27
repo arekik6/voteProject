@@ -24,7 +24,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
             foreach($candidates as $candidate){
                 ?>
                     <input type="radio" name="candidate" value=<?=$candidate->id?> > 
-                    <?= $candidate->firstName.' '.$candidate->lastName. ' : '.$candidate->description."<br/>" ?>
+                    <?= $candidate->firstName.' '.$candidate->lastName. ' : '.$candidate->C_description."<br/>" ?>
             <?php
             }
             ?>
