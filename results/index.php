@@ -4,6 +4,8 @@ require('../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 
 session_start();
+include '../includes/header.php';
+
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['msg'])) {
     echo $_SESSION['msg']."<br/>";
    

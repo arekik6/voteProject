@@ -31,7 +31,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     <?php
     }
     else {
-        echo ('No election available');
+        echo ('No elections available');
     }
 
 }

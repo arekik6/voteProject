@@ -4,6 +4,8 @@ require('../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 
 session_start();
+include '../includes/header.php';
+
 $electionID = $_POST["election"];
 if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $req = $bdd->prepare('SELECT * FROM candidate_election as CE, candidate as C, election as E 
