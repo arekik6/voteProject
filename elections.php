@@ -11,10 +11,21 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     $req->execute();
     $elections = $req->fetchAll(PDO::FETCH_OBJ);
     if(count($elections)){
+        ?>
+        <form id="contact" action="./vote/index.php" method="post">
+        <?php
         foreach($elections as $election){
-            echo ($election->nom.' : '.$election->description."<br/>" );
-        }
+            ?>
+                <input type="radio" name="election" value=<?=$election->id?> > 
+                <?= $election->nom.' : '.$election->description."<br/>" ?>
 
+        <?php
+        }
+        ?>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+             </form>
+
+    <?php
     }
     else {
         echo ('No election available');
