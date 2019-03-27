@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 session_start();
 
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
@@ -6,6 +7,16 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         include '../includes/header.php';
         ?>
        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+=======
+require('../conn_db.php');
+$bdd = ConnexionBD::getInstance();
+session_start();
+if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
+	if($_SESSION['role']){
+        ?>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+>>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +40,51 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         </li>
         </ul>
     </div>
+<<<<<<< HEAD
     </nav>-->
     <?php
         echo ('hello admin');
+=======
+    </nav>
+    <?php
+        echo ('hello admin');
+
+        $req = $bdd->prepare('SELECT * FROM election');
+        $req->execute();
+        $elections = $req->fetchAll(PDO::FETCH_OBJ);
+        if(count($elections)){
+            ?>
+            <form id="contact" action="./delete.php" method="post">
+            <?php
+            foreach($elections as $election){
+                ?>
+                    <input type="radio" name="election" value=<?=$election->id?> > 
+                    <?= $election->nom.' : '.$election->description."<br/>" ?>
+    
+            <?php
+            }
+            ?>
+                    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                 </form>
+    
+        <?php
+        }
+        else {
+            echo ('No election available');
+        }
+
+        if(isset($_POST['election'])){
+            echo $_POST['election'];
+
+            $req = $bdd->prepare('DELETE FROM candidate_election WHERE id_Election = ?');
+            $req->execute(array($_POST['election']));
+
+            $req = $bdd->prepare('DELETE FROM election WHERE id = ?');
+            $req->execute(array($_POST['election']));
+    
+        }
+    
+>>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
     }
     else{
         header("Location: ../login");
@@ -40,4 +93,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 else{
     header("Location: ../login");
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad

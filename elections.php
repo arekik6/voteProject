@@ -1,12 +1,18 @@
 <?php
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
 require('./conn_db.php');
 $bdd = ConnexionBD::getInstance();
 
 session_start();
+<<<<<<< HEAD
 include './includes/header.php';
+=======
+>>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['msg'])) {
     echo $_SESSION['msg']."<br/>";
    
@@ -31,7 +37,11 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     <?php
     }
     else {
+<<<<<<< HEAD
         echo ('No elections available');
+=======
+        echo ('No election available');
+>>>>>>> 52c8804640bebdd54e1192e5cf18731049c67cad
     }
 
 }
