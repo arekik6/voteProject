@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../assets/css/results.css" crossorigin="anonymous">
+
 <?php
 
 require('../conn_db.php');

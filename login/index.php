@@ -15,7 +15,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 	<head>
 		<title>Login</title>
 			<meta charset="utf-8">
-			<link href="css/style.css" rel='stylesheet' type='text/css' />
+			<link href="../assets/css/style-login.css" rel='stylesheet' type='text/css' />
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<!--webfonts-->
@@ -28,7 +28,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 			<div class="login-form">
 				<h1>Member Login</h1>
 						<div class="head">
-							<img src="images/user.png" alt=""/>
+							<img src="../assets/images/user.png" alt=""/>
 						</div>
 					<form method="POST" action="login.php">
 							<input name="USERNAME" type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}" >
