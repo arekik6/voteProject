@@ -15,13 +15,16 @@
                 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../admin/index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="add.php">Add Election</a>
+                        <a class="nav-link" href="../admin/addCandidate.php">Add Candidate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="modify.php">Modify Election</a>
+                        <a class="nav-link" href="../admin/add.php">Add Election</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../admin/modify.php">Modify Election</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="delete.php">Delete Election</a>
@@ -31,15 +34,11 @@
             </div>
             <?php }
              
-            $path = dirname(__DIR__);
-            $path = '/'.explode('\\',$path)[3].'/includes/logout.php';
+            $path = '/'.explode('\\',dirname(__DIR__))[3].'/includes/logout.php';
 
             ?>
 
             <div class="float-right">
             <a class="nav-link" href=<?=$path?>>Logout</a>
             </div>
-            <!-- <form action="/voteProject-master/includes/logout.php" method="get">
-                <input type="submit" value="Logout">
-             </form> -->
         </nav>
