@@ -1,14 +1,20 @@
 <?php
-require('../conn_db.php');
-$bdd = ConnexionBD::getInstance();
 session_start();
+
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
+        include '../includes/header.php';
+       
+    require('../conn_db.php');
+    $bdd = ConnexionBD::getInstance();
+    
+    if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
+        if($_SESSION['role']){
         ?>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,6 +36,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         </li>
         </ul>
     </div>
+    </nav>-->
+  
     </nav>
     <?php
         echo ('hello admin');
@@ -77,4 +85,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 else{
     header("Location: ../login");
 }
+
+}
+}
 ?>
+

@@ -4,6 +4,8 @@ require('../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 
 session_start();
+include '../includes/header.php';
+
 
 $electionID = $_POST["election"];
 if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
