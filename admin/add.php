@@ -45,7 +45,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             <fieldset>
                 <textarea name="description" placeholder="Election Description ...." tabindex="5" required></textarea>
             </fieldset>
-
+<!-- 
             <input name="submit" id="contact-submit" type="button" value="Add Candidate" onclick="javascript: addCandidate();"/>
 
             <p>Candidate 1</p>
@@ -58,7 +58,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <input type="text" name="description[]" placeholder="Description" size="10"/>
                 <input type="text" name="img[]" placeholder="Image" size="10"/>
             </fieldset>
-            
+             -->
 
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Adding">Submit</button>
@@ -89,7 +89,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     }
     */
     ?>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -145,22 +146,25 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                     <button name="submit" type="submit" id="contact-submit" data-submit="...Adding">Submit</button>
                 </fieldset>
             </form>
-        </div>
+        </div> -->
 
         <?php
         
 
         
-        if(isset($_POST["name"]) && isset($_POST["desc"]) && isset($_POST["name1"])) {
+        if(isset($_POST["name"]) && isset($_POST["description"])) {
             $name = $_POST["name"];
-            $description = $_POST["desc"];  
+            $description = $_POST["description"];
+            echo $name." ".$description;
 
-            $req = $bdd->prepare('INSERT INTO election(nom,description) VALUES(?, ?)');
+            $req = $bdd->prepare("INSERT INTO election(nom,description) VALUES(?, ?)");
             $req->execute(array($name, $description));
             var_dump($description);
             var_dump($name);
 
-            if(isset($_POST["first[]"]) && isset($_POST["last[]"]) && isset($_POST["email[]"]) && isset($_POST["tel[]"]) && isset($_POST["address[]"]) && isset($_POST["description[]"]) && isset($_POST["img[]"])) {
+            header('Location: ./addCandidate.php');
+
+           /*  if(isset($_POST["first[]"]) && isset($_POST["last[]"]) && isset($_POST["email[]"]) && isset($_POST["tel[]"]) && isset($_POST["address[]"]) && isset($_POST["description[]"]) && isset($_POST["img[]"])) {
                 $first = $_POST["first[]"];
                 $last = $_POST["last[]"];
                 $email = $_POST["email[]"];
@@ -182,11 +186,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
                 $req = $bdd->prepare('INSERT INTO candidate_election(id_candidate,id_election,vote_number) VALUES(?, ?, 0)');
                 $req->execute(array($electtion->id, $candidate->id));
-            }
+            } */
         
+        }else{
+            echo 'remplire les données';
         }
-    }
-    else{
+    }else{
         header("Location: ../login");
     }
 }
