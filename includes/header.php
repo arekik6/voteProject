@@ -8,7 +8,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#"><?php echo $_SESSION['username'];?></a>
+            <a class="navbar-brand" href="#"><?= $_SESSION['username'] ?></a>
             <?php 
                 if($_SESSION['role']){?>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -31,13 +31,13 @@
             </div>
             <?php }
              
-            $path = dirname(__FILE__);
-            $path .= "/logout.php";
-            $path = "C:/xampp/htdocs/voteProject-master/includes/logout.php"
-            //include_once($path);
+            $path = dirname(__DIR__);
+            $path = '/'.explode('\\',$path)[3].'/includes/logout.php';
+
             ?>
+
             <div class="float-right">
-            <a class="nav-link" href="/voteProject-master/includes/logout.php">Logout</a>
+            <a class="nav-link" href=<?=$path?>>Logout</a>
             </div>
             <!-- <form action="/voteProject-master/includes/logout.php" method="get">
                 <input type="submit" value="Logout">
