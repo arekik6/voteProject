@@ -1,6 +1,6 @@
+
+
 <?php
-
-
 
 require('./conn_db.php');
 $bdd = ConnexionBD::getInstance();
@@ -15,18 +15,43 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     $elections = $req->fetchAll(PDO::FETCH_OBJ);
     if(count($elections)){
         ?>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./elections.css"> 
+        
         <form id="contact" action="./vote/index.php" method="post">
+        <div class="container">
+            <div class="col-sm-12">
         <?php
         foreach($elections as $election){
             ?>
-                <input type="radio" name="election" value=<?=$election->id?> > 
-                <?= $election->nom.' : '.$election->description."<br/>" ?>
+               <!--  <input type="radio" name="election" value=<?=$election->id?> >  
+                <?= $election->nom.' : '.$election->description."<br/>" ?>-->
+
+                <div class="bs-calltoaction bs-calltoaction-warning">
+                    <div class="row">
+                        <div class="col-md-9 cta-contents">
+                            <h1 class="cta-title"><?=$election->nom?></h1>
+                            <div class="cta-desc">
+                                <p><?=$election->description?></p>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-3 cta-button">
+                            <button name="election" type="submit" value="<?=$election->id?>" class="btn btn-lg btn-block btn-warning">Go for It!</button>
+                        </div>
+                     </div>
+                </div>
+
 
         <?php
         }
         ?>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-             </form>
+         </div>
+        </div>
+              <!--   <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>-->
+             </form> 
 
     <?php
     }
@@ -42,7 +67,10 @@ else{
 
 ?>
 
-<div class="container">
+
+
+
+<!-- <div class="container">
 	<div class="row">
         <div class="span12">
     		<ul class="thumbnails">
@@ -148,4 +176,4 @@ else{
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
-</div>
+</div> -->

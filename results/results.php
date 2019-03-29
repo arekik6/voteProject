@@ -8,7 +8,7 @@ $bdd = ConnexionBD::getInstance();
 session_start();
 include '../includes/header.php';
 
-$electionID = $_POST["election"];
+$electionID = $_SESSION["election"];
 if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $req = $bdd->prepare('SELECT * FROM candidate_election as CE, candidate as C, election as E 
             WHERE E.id = ? AND C.id = CE.id_Candidate AND CE.id_Election = E.id');

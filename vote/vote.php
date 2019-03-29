@@ -12,7 +12,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
         $req = $bdd->prepare('UPDATE candidate_election SET vote_number = vote_number + 1 WHERE id_Candidate = ? AND id_Election = ?');
         $req->execute(array($candidate, $_SESSION['election']));
     }
-
+    header('Location: ../results/results.php');
     echo 'Thank you for your vote <br>';
     ?>
 
