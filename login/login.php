@@ -20,6 +20,7 @@ if(isset($username) && isset($password)) {
         $_SESSION['msg'] = 'Welcome '.$user[0]->firstName.' '.$user[0]->lastName;
 
         echo ('Welcome '.$user[0]->firstName.' '.$user[0]->lastName);
+        $_SERVER['directory'] = basename(dirname(__FILE__));
         if($user[0]->role){
             header("Location: ../admin");
         }

@@ -4,6 +4,11 @@
     float:right;
 }
 </style>
+<?php
+$path = substr(__FILE__, strlen($_SERVER['DOCUMENT_ROOT']));
+$format_path = str_replace("\\","/",$path);
+$root = explode("/",$format_path)[1];
+?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -15,26 +20,26 @@
                 
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../admin/index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/index.php"?>">Home <span class="sr-only">(current)</span></a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="../admin/addCandidate.php">Add Candidate</a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/addCandidate.php"?>">Add Candidate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/voteProject-master/admin/users/add_user.php">Add User</a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/users/add_user.php"?>">Add User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/voteProject-master/admin/users/users_list.php">Users List</a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/users/users_list.php"?>">Users List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admin/add.php">Add Election</a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/add.php"?>">Add Election</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../admin/modify.php">Modify Election</a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/modify.php"?>">Modify Election</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="delete.php">Delete Election</a>
+                        <a class="nav-link" href="<?= "/".$root."/delete.php"?>">Delete Election</a>
                     </li>
                 </ul>
                

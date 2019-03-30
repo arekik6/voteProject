@@ -20,12 +20,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
 
     <div class="container">  
-
+        <div id="contact">
         
-    <h2 style="color:white;">Election name:</h2>
-        <h3><?=$election->nom?></h3>
-    <h2 style="color:white;">Election description:</h2>
-        <h3><?=$election->description?></h3>
+    <h3>Election name:</h3>
+        <p><?=$election->nom?></p>
+    <h3>Election description:</h3>
+        <p><?=$election->description?></p>
         <!-- 
             <fieldset>
                 <input name="name" placeholder="Election Name" type="text" tabindex="1" required autofocus>
@@ -35,7 +35,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             </fieldset> -->
 
             
-            <h3 style="color:white;">Candidates List:</h3>
+            <h3>Candidates List:</h3>
             <ul>
             <?php
             $req = $bdd->prepare('SELECT * FROM candidate as c, candidate_election as ce where ce.id_Candidate = c.id and ce.id_Election = ?');
@@ -53,7 +53,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             ?>
             </ul>
     </div>
-
+    </div>      
         <?php
         
     }else{

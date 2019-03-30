@@ -5,6 +5,14 @@ $bdd = ConnexionBD::getInstance();
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
         include '../includes/header.php';
+        
+        /* echo $_SERVER['DOCUMENT_ROOT'];
+        echo __FILE__.PHP_EOL; */
+        $path = substr(__FILE__, strlen($_SERVER['DOCUMENT_ROOT']));
+        $format_path = str_replace("\\","/",$path);
+        
+        $root = explode("/",$format_path)[1];
+        echo $root;
 
         $req = $bdd->prepare('SELECT * FROM election');
         $req->execute();
