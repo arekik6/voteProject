@@ -1,40 +1,73 @@
 <?php
+require('../conn_db.php');
 session_start();
+$bdd = ConnexionBD::getInstance();
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
         include '../includes/header.php';
+
+        $req = $bdd->prepare('SELECT * FROM election');
+        $req->execute();
+        $elections = $req->fetchAll(PDO::FETCH_OBJ);
+        if(count($elections)){
+
         ?>
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+        
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#">Admin Dashboard</a>
+        
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./elections.css"> 
+        
+        <form id="contact" action="./showElection.php" method="post">
+        <div class="container">
+            <div class="col-sm-12">
+        <?php
+        foreach($elections as $election){
+            ?>
+               <!--  <input type="radio" name="election" value=<?=$election->id?> >  
+                <?= $election->nom.' : '.$election->description."<br/>" ?>-->
 
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="add.php">Add Election</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="modify.php">Modify Election</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="delete.php">Delete Election</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                <div class="bs-calltoaction bs-calltoaction-warning">
+                    <div class="row">
+                        <div class="col-md-9 cta-contents">
+                            <h1 class="cta-title"><?=$election->nom?></h1>
+                            <div class="cta-desc">
+                                <p><?=$election->description?></p>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-3 cta-button">
+                            <button name="election" type="submit" value="<?=$election->id?>" class="btn btn-lg btn-block btn-warning">Go for It!</button>
+                        </div>
+                     </div>
+                </div>
+
+
+        <?php
+        }
+        ?>
+         </div>
+        </div>
+              <!--   <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>-->
+             </form> 
+
+        
+
+
+      
     <?php
-        echo ('hello admin');
+        
     }
     else{
-        header("Location: ../login");
+        echo ('no Elections yet');
     }
+}
+else{
+    echo ('<h1>not authorized</h1>');
+}
 }
 else{
     header("Location: ../login");
