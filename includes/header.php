@@ -17,8 +17,15 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="../admin/index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="../admin/addCandidate.php">Add Candidate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/voteProject-master/admin/users/add_user.php">Add User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/voteProject-master/admin/users/users_list.php">Users List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../admin/add.php">Add Election</a>

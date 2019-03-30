@@ -1,21 +1,27 @@
 <?php
-require('../conn_db.php');
+require('../../conn_db.php');
 session_start();
 $bdd = ConnexionBD::getInstance();
 
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
-        include '../includes/header.php';
+        include '../../includes/header.php';
         ?>
+
+<!-- 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="../assets/css/style.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
 
 
     <div class="container">  
-        <form id="contact" action="./addCandidate.php" method="post">
-            <h3>Add a Candidate</h3>
-            <h4>Type all the candidate data</h4>
+        <form id="contact" action="./add_user.php" method="post">
+            <h3>Add an User</h3>
+            <h4>Type all the User data</h4>
 
+			<fieldset>
+                <input type="text" name="cin" placeholder="CIN" />
+            </fieldset>
             <fieldset>
                 <input type="text" name="first" placeholder="First Name" />
             </fieldset>
@@ -23,7 +29,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <input type="text" name="last" placeholder="Last Name" />
             </fieldset>
             <fieldset>
-                <input type="text" name="email" placeholder="Email" />
+                <input type="email" name="email" placeholder="Email" />
+            </fieldset>
+			<fieldset>
+                <input type="password" name="password" placeholder="Password" />
             </fieldset>
             <fieldset>
                 <input type="text" name="tel" placeholder="Tel" />
@@ -32,11 +41,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <input type="text" name="address" placeholder="Address"/>
             </fieldset>
             <fieldset>
-                <input type="text" name="description" placeholder="Description" />
+				<input type="radio" name="role" value="1" checked> admin<br>
+ 			 	<input type="radio" name="role" value="0"> Elector<br>
             </fieldset>
-            <fieldset>
-                <input type="text" name="img" placeholder="Image"/>
-            </fieldset>
+
             
 
             <fieldset>
@@ -48,19 +56,24 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 <?php
 
 
-        if(isset($_POST["first"]) && isset($_POST["last"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_POST["address"]) && isset($_POST["description"]) && isset($_POST["img"])) {
-            $first = $_POST["first"];
+        if(isset($_POST["first"]) && isset($_POST["last"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_POST["address"]) && isset($_POST["role"]) && isset($_POST["password"])) {
+			$cin = $_POST["cin"];
+			$first = $_POST["first"];
             $last = $_POST["last"];
-            $email = $_POST["email"];
+			$email = $_POST["email"];
+			$password = $_POST["password"];
             $tel = $_POST["tel"];
             $address = $_POST["address"];
-            $description = $_POST["description"];
-            $img = $_POST["img"];
+            $role = $_POST["role"];
+            
 
-            $req = $bdd->prepare('INSERT INTO candidate(firstName,lastName,address,email,img,tel,C_description) VALUES(?, ?, ?, ?, ?, ?, ?)');
-            $req->execute(array($first, $last,$address, $email, $img, $tel, $description));
-            echo "Candidate Added Successfully";
-        }
+            $req = $bdd->prepare('INSERT INTO user(id,firstName,lastName,address,email,password,tel,role) VALUES(?, ?, ?, ?, ?, ?, ?,?)');
+            $req->execute(array($cin, $first, $last,$address, $email,$password, $tel, $role));
+			echo "User Added Successfully";
+			header('Location: ./users_list.php');
+        }else{
+			//code
+		}
 
     }
     else{
