@@ -1,6 +1,3 @@
-
-<!------ Include the above in your HEAD tag ---------->
-
 <?php
 
 require('../conn_db.php');
@@ -19,7 +16,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         $req->execute(array($electionID));
         $election = $req->fetchAll(PDO::FETCH_OBJ);
         if (count($election)) {
-            echo ('Welcome in ' . $election[0]->nom . ' : ' . $election[0]->description . "<br/>");
             $req = $bdd->prepare('SELECT * FROM candidate as C, candidate_election as CE WHERE C.id = CE.id_candidate and CE.id_Election = ?');
             $req->execute(array($election[0]->id));
             $candidates = $req->fetchAll(PDO::FETCH_OBJ);
@@ -31,6 +27,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
             <form id="contact" action="./vote.php" method="post">
             <div class="container">
+            <h2><?= 'Welcome in ' . $election[0]->nom . ' election ' ?></h2>
             <div class="table-container">
                 <table class="table table-filter">
                     <tbody>

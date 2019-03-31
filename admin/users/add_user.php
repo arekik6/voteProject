@@ -5,6 +5,26 @@ $bdd = ConnexionBD::getInstance();
 
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
+
+		if(isset($_POST["first"]) && isset($_POST["last"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_POST["address"]) && isset($_POST["role"]) && isset($_POST["password"])) {
+			$cin = $_POST["cin"];
+			$first = $_POST["first"];
+            $last = $_POST["last"];
+			$email = $_POST["email"];
+			$password = $_POST["password"];
+            $tel = $_POST["tel"];
+            $address = $_POST["address"];
+            $role = $_POST["role"];
+            
+
+            $req = $bdd->prepare('INSERT INTO user(id,firstName,lastName,address,email,password,tel,role) VALUES(?, ?, ?, ?, ?, ?, ?,?)');
+            $req->execute(array($cin, $first, $last,$address, $email,$password, $tel, $role));
+			//echo "User Added Successfully";
+			header('Location: ./users_list.php');
+        }else{
+			//code
+		}
+
         include '../../includes/header.php';
         ?>
 
@@ -16,7 +36,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
     <div class="container">  
         <form id="contact" action="./add_user.php" method="post">
-            <h3>Add an User</h3>
+            <h3>Add a User</h3>
             <h4>Type all the User data</h4>
 
 			<fieldset>
@@ -41,8 +61,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <input type="text" name="address" placeholder="Address"/>
             </fieldset>
             <fieldset>
-				<input type="radio" name="role" value="1" checked> admin<br>
- 			 	<input type="radio" name="role" value="0"> Elector<br>
+				<input type="radio" name="role" value="0" checked> Elector<br>
+				<input type="radio" name="role" value="1"> admin<br>
+ 			 	
             </fieldset>
 
             
@@ -56,24 +77,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 <?php
 
 
-        if(isset($_POST["first"]) && isset($_POST["last"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_POST["address"]) && isset($_POST["role"]) && isset($_POST["password"])) {
-			$cin = $_POST["cin"];
-			$first = $_POST["first"];
-            $last = $_POST["last"];
-			$email = $_POST["email"];
-			$password = $_POST["password"];
-            $tel = $_POST["tel"];
-            $address = $_POST["address"];
-            $role = $_POST["role"];
-            
-
-            $req = $bdd->prepare('INSERT INTO user(id,firstName,lastName,address,email,password,tel,role) VALUES(?, ?, ?, ?, ?, ?, ?,?)');
-            $req->execute(array($cin, $first, $last,$address, $email,$password, $tel, $role));
-			echo "User Added Successfully";
-			header('Location: ./users_list.php');
-        }else{
-			//code
-		}
+       
 
     }
     else{

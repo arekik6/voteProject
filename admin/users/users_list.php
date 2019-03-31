@@ -13,6 +13,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="../assets/css/style.css" crossorigin="anonymous">
 
+        <script src="./users_list.js">
+        
+        </script>
         <table class="table">
             <thead>
                 <tr>
@@ -21,18 +24,22 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">role</th>
+                <th scope="col"></th>
                 
                 </tr>
             </thead>
+            <tbody>
 
     <?php
         
         $req = $bdd->prepare('SELECT * FROM user');
         $req->execute();    
         $users = $req->fetchAll(PDO::FETCH_OBJ);
+        $i = 1;
         foreach($users as $user) {
             ?>
-            <tr>
+            <tr <?= 'id="'.$i.'" onclick="openUser(this.id)"'?>> 
+                
                 <td><?=$user->id?></td>
                 <td><?=$user->firstName?></td>
                 <td><?=$user->lastName?></td>
@@ -41,9 +48,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                  }else{
                      echo "user";
                  } ?></td>
+                 
+                 <td><button onclick="<?="deleteUser(".$user->id.",".$i.")"?>; event.stopPropagation();">delete</button></td>
             </tr>
 
         <?php
+        $i++;
         }
         ?>
         </tbody>

@@ -23,6 +23,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
             <div class="table-container">
                 <table class="table table-filter">
                     <tbody>
+                    
     <?php
     
     if(count($votes)){
@@ -31,7 +32,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
            // echo $vote->firstName.' '.$vote->lastName.' : '.$vote->C_description.' got '.$vote->vote_number.' votes <br>';
            ?>
 
-<tr data-status="pagado">
+                <tr data-status="pagado">
                    
                     <td>
                         <div class="media">
