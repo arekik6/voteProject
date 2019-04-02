@@ -50,7 +50,11 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                      echo "user";
                  } ?></td>
                  
-                 <td><button onclick="<?="deleteUser(".$user->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button></td>
+                 <td>
+                     <button onclick="<?="openUser(".$i.","."'./modifyUser.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
+                     <button onclick="<?="deleteUser(".$user->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+
+                 </td>
             </tr>
 
         <?php
