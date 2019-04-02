@@ -1,4 +1,3 @@
-
 <?php
 require('../../conn_db.php');
 session_start();
@@ -23,7 +22,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <th scope="col">cin</th>
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
-                <th scope="col">role</th>
+                <th scope="col">telephone</th>
                 <th scope="col"></th>
                 
                 </tr>
@@ -32,25 +31,21 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
     <?php
         
-        $req = $bdd->prepare('SELECT * FROM user');
+        $req = $bdd->prepare('SELECT * FROM candidate');
         $req->execute();    
-        $users = $req->fetchAll(PDO::FETCH_OBJ);
+        $candidates = $req->fetchAll(PDO::FETCH_OBJ);
         $i = 1;
-        $path = "./showUser.php";
-        foreach($users as $user) {
+        foreach($candidates as $candidate) {
             ?>
-            <tr <?= 'id="'.$i.'" onclick="openUser(this.id,\''.$path.'\')"'?>> 
+            <tr <?= 'id="'.$i.'" onclick="openUser(this.id,\'./showCandidate.php\')"'?>> 
                 
-                <td><?=$user->id?></td>
-                <td><?=$user->firstName?></td>
-                <td><?=$user->lastName?></td>
-                <td><?php if($user->role){
-                    echo "admin";
-                 }else{
-                     echo "user";
-                 } ?></td>
+                <td><?=$candidate->id?></td>
+                <td><?=$candidate->firstName?></td>
+                <td><?=$candidate->lastName?></td>
+                <td><?=$candidate->tel?></td>
+               
                  
-                 <td><button onclick="<?="deleteUser(".$user->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button></td>
+                 <td><button onclick="<?="deletecandidate(".$candidate->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button></td>
             </tr>
 
         <?php
@@ -72,34 +67,3 @@ else{
 }
 
 ?>
-<!-- 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table> -->

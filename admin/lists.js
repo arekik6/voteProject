@@ -1,4 +1,4 @@
-function openUser(id){
+function openUser(id,path){
           
     // console.dir(document.getElementById(id).firstChild.nextSibling.innerText);
    console.log("open user declenchée");
@@ -28,7 +28,7 @@ function openUser(id){
    // It can be made less wordy if you use one.
    var form = document.createElement("form");
    form.setAttribute("method", method);
-   form.setAttribute("action", "./showUser.php");
+   form.setAttribute("action", path);
 
    var hiddenField = document.createElement("input");
    hiddenField.setAttribute("type", "hidden");

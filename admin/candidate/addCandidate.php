@@ -17,7 +17,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             <h4>Type all the candidate data</h4>
 
             <fieldset>
-                <input type="text" name="first" placeholder="First Name" />
+                <input type="text" name="first" placeholder="First Name" required/>
             </fieldset>
             <fieldset>
                 <input type="text" name="last" placeholder="Last Name" />
