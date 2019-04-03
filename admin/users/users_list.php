@@ -52,7 +52,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                  
                  <td>
                      <button onclick="<?="openUser(".$i.","."'./modifyUser.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
-                     <button onclick="<?="deleteUser(".$user->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                     <button onclick="<?="deleteUser(".$user->id.",'user',".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
 
                  </td>
             </tr>

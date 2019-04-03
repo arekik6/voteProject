@@ -201,6 +201,10 @@ ALTER TABLE `vote`
   ADD CONSTRAINT `Vote_fk1` FOREIGN KEY (`id_Election`) REFERENCES `election` (`id`);
 COMMIT;
 
+ALTER TABLE `candidate_election`
+    DROP CONSTRAINT `Candidate_Election_fk0`,
+    ADD CONSTRAINT `Candidate_Election_fk0` FOREIGN KEY (`id_Candidate`) REFERENCES `candidate` (`id`) on delete cascade;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

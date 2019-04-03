@@ -24,12 +24,12 @@ function openUser(id,path){
    }
 
 
-   function deleteUser(id,elementId){
+   function deleteUser(id,personne,elementId){
     
     console.log("deleteUser declenchée");
     var http = new XMLHttpRequest();
-    var url = './delete.php';
-    var params = 'id=' + id;
+    var url = '../deletePerson.php';
+    var params = 'id=' + id + '&personne=' + personne;
     http.open('POST', url, true);
  
     //Send the proper header information along with the request
@@ -37,7 +37,7 @@ function openUser(id,path){
  
     http.onreadystatechange = function() {//Call a function when the state changes.
         if(http.readyState == 4 && http.status == 200) {
-          console.log("1st if " + elementId);
+          console.log("1st if " + id);
           console.log(http.responseText);
           if(http.responseText == 'success'){
             console.log("2nd if");

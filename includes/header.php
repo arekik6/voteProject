@@ -42,7 +42,7 @@ $root = explode("/",$format_path)[1];
                         <a class="nav-link" href="<?= "/".$root."/admin/modify.php"?>">Modify Election</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= "/".$root."/delete.php"?>">Delete Election</a>
+                        <a class="nav-link" href="<?= "/".$root."/deletePerson.php"?>">Delete Election</a>
                     </li>
                 </ul>
                
