@@ -4,7 +4,21 @@ $bdd = ConnexionBD::getInstance();
 session_start();
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
-        $id = $_POST['id'];
+	    if(isset($_SESSION['modifyId'])){
+	        $id = $_SESSION['modifyId'];
+	        if(isset($_POST['first'])&&isset($_POST['last'])&&isset($_POST['email'])&&isset($_POST['tel'])
+                &&isset($_POST['address'])&&isset($_POST['role'])){
+
+                $req = $bdd->prepare('update user set firstName=? , lastName=? , address=? , email=? , tel=? ,role=? where id=? ');
+                $req->execute(array($_POST['first'],$_POST['last'],$_POST['address'],$_POST['email'],$_POST['tel'],$_POST['role'],$id));
+
+            }else{
+	            echo "problem";
+            }
+        }else{
+            $id = $_POST['id'];
+        }
+
         $req = $bdd->prepare('SELECT * FROM user where id=?');
             $req->execute(array($id));    
             $user = $req->fetch(PDO::FETCH_OBJ);
@@ -35,7 +49,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     <h3>user tel:</h3>
         <p><?=$user->tel?></p>
     <h3>user role:</h3>
-        <p><?php if($user->firstName){
+        <p><?php if($user->role){
             echo "admin";
         }else{
                 echo "Elector";
@@ -80,4 +94,6 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 else{
     header("Location: ../login");
 }
+unset($_SESSION['modifyId']);
+unset($_SESSION['id']);
 ?>

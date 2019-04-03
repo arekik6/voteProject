@@ -3,6 +3,8 @@ require('../../conn_db.php');
 session_start();
 $bdd = ConnexionBD::getInstance();
 
+
+unset($_SESSION["modifyId"]);
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
     if($_SESSION['role']){
 
@@ -11,6 +13,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             $req = $bdd->prepare('SELECT * FROM user WHERE id=?');
             $req->execute(array($id));
             $user = $req->fetch(PDO::FETCH_OBJ);
+            $_SESSION['modifyId'] = $id;
 
 
         include '../../includes/header.php';
@@ -23,7 +26,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
 
         <div class="container">
-            <form id="contact" action="" method="post">
+            <form id="contact" action="./showUser.php" method="post">
                 <h3>Add a User</h3>
                 <h4>Type all the User data</h4>
 

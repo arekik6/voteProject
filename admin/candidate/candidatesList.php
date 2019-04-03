@@ -45,7 +45,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <td><?=$candidate->tel?></td>
                
                  
-                 <td><button onclick="<?="deletecandidate(".$candidate->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button></td>
+                 <td>
+                     <button onclick="<?="openUser(".$i.","."'./modifyCandidate.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
+                     <button onclick="<?="deletecandidate(".$candidate->id.",".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                 </td>
             </tr>
 
         <?php
