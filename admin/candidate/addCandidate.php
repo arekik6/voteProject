@@ -1,14 +1,14 @@
 <?php
-require('../conn_db.php');
+require('../../conn_db.php');
 session_start();
 $bdd = ConnexionBD::getInstance();
 
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
-        include '../includes/header.php';
+        include '../../includes/header.php';
         ?>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="../assets/css/style.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
 
 
     <div class="container">  
