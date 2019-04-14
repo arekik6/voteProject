@@ -49,11 +49,13 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             var td4 = document.createElement("td");
                             var td5 = document.createElement("td");
                             var button1 = document.createElement("button");
-                            button1.classList.add("btn btn-primary");
+                            button1.classList.add("btn");
+                            button1.classList.add("btn-primary");
                             button1.innerText = 'modify';
                             button1.onclick = "openUser(" + i + ",./modifyUser.php); event.stopPropagation();";
                             var button2 = document.createElement("button");
-                            button2.classList.add("btn btn-danger");
+                            button1.classList.add("btn");
+                            button1.classList.add("btn-danger");
                             button2.innerText = 'delete';
                             button2.onclick = "deleteUser(" + response[i].id + ",'user'," + i + "); event.stopPropagation();";
                             td5.appendChild(button1);
