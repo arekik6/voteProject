@@ -7,15 +7,11 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
         if(isset($_SESSION['cmodifyId'])){
             $id = $_SESSION['cmodifyId'];
-            if(isset($_POST['first'])&&isset($_POST['last'])&&isset($_POST['email'])&&isset($_POST['tel'])
-                &&isset($_POST['address'])&&isset($_POST['description'])){
+            if(isset($_POST['first']) && isset($_POST['last']) && isset($_POST['email']) && isset($_POST['tel'])
+                && isset($_POST['address']) && isset($_POST['description'])){
 
                 $req = $bdd->prepare('update candidate set firstName=? , lastName=? , address=? , email=? , tel=? ,C_description=? where id=? ');
                 $req->execute(array($_POST['first'],$_POST['last'],$_POST['address'],$_POST['email'],$_POST['tel'],$_POST['description'],$id));
-
-            }else{
-                echo "problem";
-            }
         }else{
             $id = $_POST['id'];
         }
