@@ -13,8 +13,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 $req->execute(array($_POST['first'],$_POST['last'],$_POST['address'],$_POST['email'],$_POST['tel'],$_POST['role'],$id));
 
             }else{
-	            echo "problem";
+	           // echo "problem";
             }
+            unset($_SESSION['modifyId']);
+            unset($_SESSION['id']);
         }else{
             $id = $_POST['id'];
         }
