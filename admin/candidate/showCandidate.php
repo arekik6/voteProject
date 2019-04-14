@@ -12,6 +12,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
                 $req = $bdd->prepare('update candidate set firstName=? , lastName=? , address=? , email=? , tel=? ,C_description=? where id=? ');
                 $req->execute(array($_POST['first'],$_POST['last'],$_POST['address'],$_POST['email'],$_POST['tel'],$_POST['description'],$id));
+
+            }
         }else{
             $id = $_POST['id'];
         }

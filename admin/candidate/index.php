@@ -1,12 +1,17 @@
 <?php
-define("ROW_PER_PAGE",2);
+define("ROW_PER_PAGE",4);
 require('../../conn_db.php');
 session_start();
 $bdd = ConnexionBD::getInstance();
 
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
-        include '../../includes/header.php';
+				include '../../includes/header.php';
+				$search_keyword = '';
+				if(!empty($_POST['search']['keyword'])) {
+					$search_keyword = $_POST['search']['keyword'];
+				}
+
         ?>
          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -18,6 +23,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         
         </script>
         <form name='frmSearch' action='' method='post'>
+				<div style='text-align:right;margin:20px 0px;'><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div>
 
         <table class="table">
             <thead>
@@ -43,9 +49,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             $start=($page-1) * ROW_PER_PAGE;
         }
         $limit=" limit " . $start . "," . ROW_PER_PAGE;
-
-        $sql = 'SELECT * FROM candidate ORDER BY id ASC ';
-        $pagination_statement = $bdd->prepare($sql);
+			
+        $sql = 'SELECT * FROM candidate WHERE id LIKE :keyword OR firstName LIKE :keyword OR lastName LIKE :keyword ORDER BY id ASC ';
+				$pagination_statement = $bdd->prepare($sql);
+				$pagination_statement->bindValue(':keyword', '%' . $search_keyword . '%', PDO::PARAM_STR);
         $pagination_statement->execute();    
         $row_count = $pagination_statement->rowCount();
         if(!empty($row_count)){
@@ -64,7 +71,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         }
         
         $query = $sql.$limit;
-        $pdo_statement = $bdd->prepare($query);
+				$pdo_statement = $bdd->prepare($query);
+				$pdo_statement->bindValue(':keyword', '%' . $search_keyword . '%', PDO::PARAM_STR);
         $pdo_statement->execute();
         $result = $pdo_statement->fetchAll(PDO::FETCH_OBJ);
         ?>

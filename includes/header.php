@@ -30,7 +30,7 @@ $root = explode("/",$format_path)[1];
                         <a class="nav-link" href="<?= "/".$root."/admin/candidate/addCandidate.php"?>">Add Candidate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= "/".$root."/admin/candidate/candidatesList.php"?>">Candidates list</a>
+                        <a class="nav-link" href="<?= "/".$root."/admin/candidate/index.php"?>">Candidates list</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= "/".$root."/admin/users/add_user.php"?>">Add User</a>
