@@ -41,8 +41,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                         for (i in response){
                             var tr = document.createElement("tr");
                             tr.id = i;
-                            tr.onclick = "openUser(" + i + ",'./showUser.php')"
-
+                            tr.onclick = function () {
+                                openUser(i,'./showUser.php');
+                            }
+                            var td0 = document.createElement("td");
                             var td1 = document.createElement("td");
                             var td2 = document.createElement("td");
                             var td3 = document.createElement("td");
@@ -52,12 +54,18 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             button1.classList.add("btn");
                             button1.classList.add("btn-primary");
                             button1.innerText = 'modify';
-                            button1.onclick = "openUser(" + i + ",./modifyUser.php); event.stopPropagation();";
+                            button1.onclick = function () {
+                                openUser(i ,'./modifyUser.php');
+                                event.stopPropagation();
+                            }
                             var button2 = document.createElement("button");
-                            button1.classList.add("btn");
-                            button1.classList.add("btn-danger");
+                            button2.classList.add("btn");
+                            button2.classList.add("btn-danger");
                             button2.innerText = 'delete';
-                            button2.onclick = "deleteUser(" + response[i].id + ",'user'," + i + "); event.stopPropagation();";
+                            button2.onclick = function () {
+                                deleteUser(response[i].id ,'user',i);
+                                event.stopPropagation();
+                            }
                             td5.appendChild(button1);
                             td5.appendChild(button2);
 
@@ -69,6 +77,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             }else{
                                 td4.innerText = 'user';
                             }
+                            tr.appendChild(td0);
                             tr.appendChild(td1);
                             tr.appendChild(td2);
                             tr.appendChild(td3);
