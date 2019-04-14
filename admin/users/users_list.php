@@ -14,8 +14,78 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
 
         <script src="../lists.js">
-        
         </script>
+        <script>
+            function myFunction() {
+                console.log("myFunction declenchée");
+                var input, filter;
+                input = document.getElementById('myInput');
+                filter = input.value;//.toLowerCase();
+
+                var container = document.getElementById("tbody");
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+                var http = new XMLHttpRequest();
+                var url = './getUsers.php?search=' + filter;
+                //var params = 'search=' + filter;
+                http.open('GET', url, true);
+
+                //Send the proper header information along with the request
+                http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                http.onreadystatechange = function() {//Call a function when the state changes.
+                    if(http.readyState == 4 && http.status == 200) {
+                        console.log("1st if ");
+                        console.log(http.responseText);
+                        response = JSON.parse(http.responseText);
+                        for (i in response){
+                            var tr = document.createElement("tr");
+                            tr.id = i;
+                            tr.onclick = "openUser(" + i + ",'./showUser.php')"
+
+                            var td1 = document.createElement("td");
+                            var td2 = document.createElement("td");
+                            var td3 = document.createElement("td");
+                            var td4 = document.createElement("td");
+                            var td5 = document.createElement("td");
+                            var button1 = document.createElement("button");
+                            button1.classList.add("btn btn-primary");
+                            button1.innerText = 'modify';
+                            button1.onclick = "openUser(" + i + ",./modifyUser.php); event.stopPropagation();";
+                            var button2 = document.createElement("button");
+                            button2.classList.add("btn btn-danger");
+                            button2.innerText = 'delete';
+                            button2.onclick = "deleteUser(" + response[i].id + ",'user'," + i + "); event.stopPropagation();";
+                            td5.appendChild(button1);
+                            td5.appendChild(button2);
+
+                            td1.innerText = response[i].id;
+                            td2.innerText = response[i].firstName;
+                            td3.innerText = response[i].lastName;
+                            if(response[i].role){
+                                td4.innerText = 'admin';
+                            }else{
+                                td4.innerText = 'user';
+                            }
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            tr.appendChild(td4);
+                            tr.appendChild(td5);
+                            container.appendChild(tr);
+
+                        }
+                    }
+                }
+
+                http.send('');
+            }
+        </script>
+
+        <div >
+
+        <input style="left:50%;width: 60%;margin: 2px;" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -28,7 +98,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
 
     <?php
         
