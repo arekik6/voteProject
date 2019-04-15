@@ -1,14 +1,18 @@
-function openUser(id,path){
+function openUser(id,path,typ){
           
     // console.dir(document.getElementById(id).firstChild.nextSibling.innerText);
    console.log("open user declenchée");
     method = "post"; // Set method to post by default if not specified.
-
-    userId = document.getElementById(id).firstChild.nextSibling.innerText;
-
+    var userId;
+    if(typ){
+        userId = document.getElementById(id).firstChild.innerText;
+    }else{
+        userId = document.getElementById(id).firstChild.nextSibling.innerText;
+    }
+    console.log('userId',userId)
    // The rest of this code assumes you are not using a library.
    // It can be made less wordy if you use one.
-   var form = document.createElement("form");
+   /*var form = document.createElement("form");
    form.setAttribute("method", "get");
    form.setAttribute("action", path);
 
@@ -19,8 +23,8 @@ function openUser(id,path){
 
    form.appendChild(hiddenField);
 
-   document.body.appendChild(form);
-   form.submit();
+   document.body.appendChild(form);*/
+   //form.submit();
    }
 
 

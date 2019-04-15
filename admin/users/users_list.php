@@ -42,9 +42,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             var tr = document.createElement("tr");
                             tr.id = i;
                             tr.onclick = function () {
-                                openUser(i,'./showUser.php');
+                                openUser(i,'./showUser.php',1);
                             }
-                            var td0 = document.createElement("td");
+
                             var td1 = document.createElement("td");
                             var td2 = document.createElement("td");
                             var td3 = document.createElement("td");
@@ -77,7 +77,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             }else{
                                 td4.innerText = 'user';
                             }
-                            tr.appendChild(td0);
+
                             tr.appendChild(td1);
                             tr.appendChild(td2);
                             tr.appendChild(td3);
