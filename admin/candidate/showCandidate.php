@@ -38,7 +38,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     <div class="container">  
     
         <div id="contact">
-        <img src="<?='../.'.$candidate->img?>" alt=""/>
+        <img widhth="80px" height="80px" src="<?='../.'.$candidate->img?>" alt=""/>
 
     <h3>candidate firstname:</h3>
         <p><?=$candidate->firstName?></p>

@@ -54,7 +54,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left">
-                                <img src="<?='.'.$candidate->img?>" class="media-photo">
+                                <img widhth="70px" height="70px" src="<?='.'.$candidate->img?>" class="media-photo">
                             </a>
                             <div class="media-body">
                                 <!-- <span class="media-meta pull-right">Febrero 13, 2016</span> -->
