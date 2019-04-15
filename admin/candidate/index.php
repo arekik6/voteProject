@@ -23,7 +23,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         
         </script>
         <form name='frmSearch' action='' method='post'>
-				<div style='text-align:right;margin:20px 0px;'><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div>
+				<div id="search" style="text-align:right;margin:20px 20px;" ><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div>
 
         <table class="table">
             <thead>
@@ -88,11 +88,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                     <td><?=$candidate->firstName?></td>
                     <td><?=$candidate->lastName?></td>
                     <td><?=$candidate->tel?></td>
-										<td >
-												<button type="button" onclick="window.location.href='<?='./showCandidate.php?id='.$candidate->id ?>'" class="btn btn-success" >show</button>
+					<td >
+						<button type="button" onclick="window.location.href='<?='./showCandidate.php?id='.$candidate->id ?>'" class="btn btn-success" >show</button>
                         <button type="button" onclick="window.location.href='<?='./modifyCandidate.php?id='.$candidate->id ?>'" class="btn btn-primary">modify</button>
-                        <button type="button" onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
-                		</td>
+
+						<button type="button" onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                	</td>
 
 
                 </tr>

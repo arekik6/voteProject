@@ -16,7 +16,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="../assets/css/style.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="../assets/css/showElection.css" crossorigin="anonymous">
 
 
     <div class="container">  
@@ -26,13 +26,6 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <p><?=$election->nom?></p>
     <h3>Election description:</h3>
         <p><?=$election->description?></p>
-        <!-- 
-            <fieldset>
-                <input name="name" placeholder="Election Name" type="text" tabindex="1" required autofocus>
-            </fieldset>
-            <fieldset>
-                <textarea name="desc" placeholder="Election Description ...." tabindex="5" required></textarea>
-            </fieldset> -->
 
             
             <h3>Candidates List:</h3>
@@ -52,6 +45,14 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             }
             ?>
             </ul>
+            <form action="./modify.php" method="post">
+                    <button type="submit" name="modifyID" value="<?=$election->id?>" class="btn btn-primary">modify</button>
+            </form>
+
+            <form action="./delete.php" method="post">
+                    <button type="submit" name="deleteID" value="<?=$election->id?>" class="btn btn-danger">delete</button>
+            </form>
+
     </div>
     </div>      
         <?php
