@@ -7,8 +7,15 @@ session_start();
 include '../includes/header.php';
 $candidate = $_POST["candidate"];
 if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
+    $req = $bdd->prepare('SELECT * FROM user WHERE email = ?');
+    $req->execute(array($_SESSION['username']));
+    $user = $req->fetch(PDO::FETCH_OBJ);
+
 
     if(isset($candidate)) {
+        $req = $bdd->prepare('INSERT INTO vote(id_Election,id_User) VALUES(?,?)');
+        $req->execute(array($_SESSION['election'],$user->id));
+
         $req = $bdd->prepare('UPDATE candidate_election SET vote_number = vote_number + 1 WHERE id_Candidate = ? AND id_Election = ?');
         $req->execute(array($candidate, $_SESSION['election']));
     }
