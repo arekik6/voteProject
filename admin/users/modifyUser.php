@@ -28,7 +28,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
         <div class="container">
             <form id="contact" action="./showUser.php" method="post">
-                <h3>Add a User</h3>
+                <h3>modify a User</h3>
                 <h4>Type all the User data</h4>
 
 

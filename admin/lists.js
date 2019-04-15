@@ -12,13 +12,17 @@ function openUser(id,path,typ){
     console.log('userId',userId)
    // The rest of this code assumes you are not using a library.
    // It can be made less wordy if you use one.
-   var form = document.createElement("form");
+    var form = document.createElement("form");
    form.setAttribute("method", method);
    form.setAttribute("action", path);
     console.log(path);
    var hiddenField = document.createElement("input");
    hiddenField.setAttribute("type", "hidden");
+   if(path === './showCandidate.php'){
+    hiddenField.setAttribute("name", "showID");
+   }else{
    hiddenField.setAttribute("name", "id");
+   }
    hiddenField.setAttribute("value", userId);
 
    form.appendChild(hiddenField);
@@ -55,7 +59,7 @@ function openUser(id,path,typ){
     http.send(params); 
    }
 
-   function myFunction() {
+   function myFunction(path) {
     console.log("myFunction declenchée");
     var input, filter;
     input = document.getElementById('myInput');
@@ -65,8 +69,9 @@ function openUser(id,path,typ){
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
+
     var http = new XMLHttpRequest();
-    var url = './getUsers.php?search=' + filter;
+    var url = path + '?search=' + filter;
     //var params = 'search=' + filter;
     http.open('GET', url, true);
 
@@ -81,7 +86,11 @@ function openUser(id,path,typ){
                 var tr = document.createElement("tr");
                 tr.id = i;
                 tr.onclick = function () {
+                  if(path === './getCandidates.php'){
+                    openUser(i,'./showCandidate.php',1);
+                  }else{
                     openUser(i,'./showUser.php',1);
+                  }
                 }
 
                 var td1 = document.createElement("td");
@@ -94,16 +103,26 @@ function openUser(id,path,typ){
                 button1.classList.add("btn-primary");
                 button1.innerText = 'modify';
                 button1.onclick = function () {
+                  if(path === './getCandidates.php'){
+                    openUser(i,'./modifyCandidate.php',1);
+                    event.stopPropagation();
+                  }else{
                     openUser(i ,"./modifyUser.php",1);
                     event.stopPropagation();
+                  }
                 }
                 var button2 = document.createElement("button");
                 button2.classList.add("btn");
                 button2.classList.add("btn-danger");
                 button2.innerText = 'delete';
                 button2.onclick = function () {
+                  if(path === './getCandidates.php'){
+                    deleteUser(response[i].id ,'candidate',i);
+                    event.stopPropagation();
+                  }else{
                     deleteUser(response[i].id ,'user',i);
                     event.stopPropagation();
+                  }
                 }
                 td5.appendChild(button1);
                 td5.appendChild(button2);
@@ -111,11 +130,15 @@ function openUser(id,path,typ){
                 td1.innerText = response[i].id;
                 td2.innerText = response[i].firstName;
                 td3.innerText = response[i].lastName;
-                if(response[i].role){
-                    td4.innerText = 'admin';
+                if(path === './getCandidates.php'){
+                  td4.innerText = response[i].tel;
                 }else{
-                    td4.innerText = 'user';
-                }
+                    if(response[i].role){
+                        td4.innerText = 'admin';
+                    }else{
+                        td4.innerText = 'user';
+                    }
+                 }
 
                 tr.appendChild(td1);
                 tr.appendChild(td2);
@@ -128,5 +151,5 @@ function openUser(id,path,typ){
         }
     }
 
-    http.send('');
+    http.send();
 }

@@ -24,8 +24,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         
         </script>
         <form name='frmSearch' action='' method='post'>
-				<div id="search" style="text-align:right;margin:20px 20px;" ><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div>
-
+			 <div id="search" style="text-align:right;margin:20px 20px;" ><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div> 
+               
         <table class="table">
             <thead>
                 <tr>
@@ -38,7 +38,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
 
     <?php
         /* Pagination Code starts */

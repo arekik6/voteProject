@@ -9,13 +9,14 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
        <!--  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-     -->
+     
          <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous"> 
+      -->  <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous"> 
 
         <script src="../lists.js?newversion">
-        
         </script>
+
+        <input style="left:50%;width: 60%;margin: 2px;" type="text" id="myInput" onkeyup="myFunction('./getCandidates.php')" placeholder="Search for names.." title="Type in a name">
         <table class="table">
             <thead>
                 <tr>
@@ -28,7 +29,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
 
     <?php
         

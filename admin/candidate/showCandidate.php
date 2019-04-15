@@ -2,7 +2,7 @@
 require('../../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 session_start();
-unset($_SESSION['cmodifyId']);
+//unset($_SESSION['cmodifyId']);
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
 
@@ -17,7 +17,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             }
         }
         else{
-            $id = $_POST['showID'];
+            $id = $_GET['showID'];
         }
 
         $req = $bdd->prepare('SELECT * FROM candidate where id=?');
