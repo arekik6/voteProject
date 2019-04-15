@@ -37,7 +37,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         $i = 1;
         foreach($candidates as $candidate) {
             ?>
-            <tr <?= 'id="'.$i.'" onclick="openUser(this.id,\'./showCandidate.php\')"'?>> 
+            <tr <?= 'id="'.$candidate->id.'" onclick="openUser(this.id,\'./showCandidate.php\')"'?>> 
                 
                 <td><?=$candidate->id?></td>
                 <td><?=$candidate->firstName?></td>
@@ -46,8 +46,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                
                  
                  <td>
-                     <button onclick="<?="openUser(".$i.","."'./modifyCandidate.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
-                     <button onclick="<?="deleteUser(".$candidate->id.",'candidate',".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                     <button onclick="<?="openUser(".$candidate->id.","."'./modifyCandidate.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
+                     <button onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
                  </td>
             </tr>
 
