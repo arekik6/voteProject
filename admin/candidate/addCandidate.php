@@ -12,7 +12,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
 
     <div class="container">  
-        <form id="contact" action="./addCandidate.php" method="post">
+        <form enctype="multipart/form-data" id="contact" action="./addCandidate.php" method="post">
             <h3>Add a Candidate</h3>
             <h4>Type all the candidate data</h4>
 
@@ -23,7 +23,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <input type="text" name="last" placeholder="Last Name" />
             </fieldset>
             <fieldset>
-                <input type="text" name="email" placeholder="Email" />
+                <input type="email" name="email" placeholder="Email" />
             </fieldset>
             <fieldset>
                 <input type="text" name="tel" placeholder="Tel" />
@@ -35,7 +35,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <input type="text" name="description" placeholder="Description" />
             </fieldset>
             <fieldset>
-                <input type="text" name="img" placeholder="Image"/>
+                <input type="file" name="img" />
             </fieldset>
             
 
@@ -48,17 +48,24 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 <?php
 
 
-        if(isset($_POST["first"]) && isset($_POST["last"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_POST["address"]) && isset($_POST["description"]) && isset($_POST["img"])) {
+        if(isset($_POST["first"]) && isset($_POST["last"]) && isset($_POST["email"]) && isset($_POST["tel"]) && isset($_POST["address"]) && isset($_POST["description"]) && isset($_FILES["img"])) {
             $first = $_POST["first"];
             $last = $_POST["last"];
             $email = $_POST["email"];
             $tel = $_POST["tel"];
             $address = $_POST["address"];
-            $description = $_POST["description"];
-            $img = $_POST["img"];
+			$description = $_POST["description"];
+
+			$uploads_dir = '../../assets/images/candidates';
+			$tmp_name = $_FILES["img"]["tmp_name"];
+			$extension = explode('.',basename($_FILES["img"]["name"]))[count($_FILES["img"]["name"])];
+			$name = $first.$last.'.'.$extension;
+        	move_uploaded_file($tmp_name, "$uploads_dir/$name");
+    		
+		
 
             $req = $bdd->prepare('INSERT INTO candidate(firstName,lastName,address,email,img,tel,C_description) VALUES(?, ?, ?, ?, ?, ?, ?)');
-            $req->execute(array($first, $last,$address, $email, $img, $tel, $description));
+            $req->execute(array($first, $last,$address, $email, "$uploads_dir/$name", $tel, $description));
             echo "Candidate Added Successfully";
         }
 
@@ -72,3 +79,5 @@ else{
 }
 
 ?>
+
+    
