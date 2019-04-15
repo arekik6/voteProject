@@ -2,12 +2,12 @@
 require('../../conn_db.php');
 $bdd = ConnexionBD::getInstance();
 session_start();
+unset($_SESSION['cmodifyId']);
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
 
         if(isset($_SESSION['cmodifyId'])){
             $id = $_SESSION['cmodifyId'];
-            unset($_SESSION['cmodifyId']);
             if(isset($_POST['first']) && isset($_POST['last']) && isset($_POST['email']) && isset($_POST['tel'])
                 && isset($_POST['address']) && isset($_POST['description'])){
 
@@ -17,7 +17,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             }
         }
         else{
-            $id = $_GET['id'];
+            $id = $_POST['showID'];
         }
 
         $req = $bdd->prepare('SELECT * FROM candidate where id=?');
@@ -38,7 +38,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     <div class="container">  
     
         <div id="contact">
-        <img src="<?=$candidate->img?>" alt=""/>
+        <img src="<?='../.'.$candidate->img?>" alt=""/>
 
     <h3>candidate firstname:</h3>
         <p><?=$candidate->firstName?></p>

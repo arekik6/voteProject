@@ -46,13 +46,19 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             }
             ?>
             </ul>
-            <form action="./modify.php" method="post">
-                    <button type="submit" name="modifyID" value="<?=$election->id?>" class="btn btn-primary">modify</button>
-            </form>
+            <table class='buttonsTable'>
+                <tr>
 
-            <form action="./delete.php" method="post">
-                    <button type="submit" name="deleteID" value="<?=$election->id?>" class="btn btn-danger">delete</button>
-            </form>
+                    <form action="./modify.php" method="post">
+                            <button type="submit" name="modifyID" value="<?=$election->id?>" class="btn btn-primary">modify</button>
+                    </form>
+
+                    <form action="./delete.php" method="post">
+                            <button type="submit" name="deleteID" value="<?=$election->id?>" class="btn btn-danger">delete</button>
+                    </form>
+                </tr>
+
+            </table>
 
     </div>
     </div>      

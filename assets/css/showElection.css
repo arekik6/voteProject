@@ -21,6 +21,10 @@ body {
   background: #F7DA55;
 }
 
+.buttonsTable{
+
+  align-content: right;
+}
 .container {
   max-width: 400px;
   width: 100%;

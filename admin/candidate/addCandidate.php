@@ -57,11 +57,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             $address = $_POST["address"];
 			$description = $_POST["description"];
 
-			$uploads_dir = '../../assets/images/candidates';
+			$uploads_dir = './assets/images/candidates';
 			$tmp_name = $_FILES["img"]["tmp_name"];
-			$extension = explode('.',basename($_FILES["img"]["name"]))[count($_FILES["img"]["name"])];
+            $ext = explode('.',basename($_FILES["img"]["name"]));
+            $extension = $ext[count($ext)-1];
 			$name = $first.$last.'.'.$extension;
-        	move_uploaded_file($tmp_name, "$uploads_dir/$name");
+        	move_uploaded_file($tmp_name, "../."."$uploads_dir/$name");
     		
 		
 

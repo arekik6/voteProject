@@ -25,7 +25,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <div class="container">
             <form id="contact" action="./showElection.php" method="post">
                 <h3>Modify Election</h3>
-                <h4>Type all the candidate data</h4>
+                <h4>Type all the election data</h4>
 
                 <fieldset>
                     <input type="text" name="first" placeholder="Name" value="<?=$election->nom?>" required/>
