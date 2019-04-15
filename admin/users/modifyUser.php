@@ -8,7 +8,7 @@ unset($_SESSION["modifyId"]);
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
     if($_SESSION['role']){
 
-        $id = $_POST["id"];
+        $id = $_GET["id"];
 
             $req = $bdd->prepare('SELECT * FROM user WHERE id=?');
             $req->execute(array($id));

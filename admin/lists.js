@@ -2,7 +2,7 @@ function openUser(id,path,typ){
           
     // console.dir(document.getElementById(id).firstChild.nextSibling.innerText);
    console.log("open user declenchée");
-    method = "post"; // Set method to post by default if not specified.
+    method = "get"; // Set method to post by default if not specified.
     var userId;
     if(typ){
         userId = document.getElementById(id).firstChild.innerText;
@@ -13,7 +13,7 @@ function openUser(id,path,typ){
    // The rest of this code assumes you are not using a library.
    // It can be made less wordy if you use one.
    var form = document.createElement("form");
-   form.setAttribute("method", "get");
+   form.setAttribute("method", method);
    form.setAttribute("action", path);
     console.log(path);
    var hiddenField = document.createElement("input");
@@ -94,7 +94,7 @@ function openUser(id,path,typ){
                 button1.classList.add("btn-primary");
                 button1.innerText = 'modify';
                 button1.onclick = function () {
-                    openUser(i ,"./modifyUser.php",1,'post');
+                    openUser(i ,"./modifyUser.php",1);
                     event.stopPropagation();
                 }
                 var button2 = document.createElement("button");
