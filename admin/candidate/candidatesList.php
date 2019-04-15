@@ -13,7 +13,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
          <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous"> 
 
-        <script src="../lists.js">
+        <script src="../lists.js?newversion">
         
         </script>
         <table class="table">

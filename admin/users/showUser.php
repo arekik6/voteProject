@@ -18,7 +18,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             unset($_SESSION['modifyId']);
             unset($_SESSION['id']);
         }else{
-            $id = $_POST['id'];
+            $id = $_GET['id'];
         }
 
         $req = $bdd->prepare('SELECT * FROM user where id=?');
