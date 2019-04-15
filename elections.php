@@ -15,9 +15,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     $elections = $req->fetchAll(PDO::FETCH_OBJ);
     if(count($elections)){
         ?>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+   <!--      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
         <link rel="stylesheet" type="text/css" href="./elections.css"> 
         
         <form id="contact" action="./vote/index.php" method="post">

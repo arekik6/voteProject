@@ -8,10 +8,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 	if($_SESSION['role']){
         include '../../includes/header.php';
         ?>
-         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!--      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous"> 
 
         <script src="../lists.js">
         </script>
@@ -42,9 +42,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             var tr = document.createElement("tr");
                             tr.id = i;
                             tr.onclick = function () {
-                                openUser(i,'./showUser.php');
+                                openUser(i,'./showUser.php',1);
                             }
-                            var td0 = document.createElement("td");
+
                             var td1 = document.createElement("td");
                             var td2 = document.createElement("td");
                             var td3 = document.createElement("td");
@@ -77,7 +77,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             }else{
                                 td4.innerText = 'user';
                             }
-                            tr.appendChild(td0);
+
                             tr.appendChild(td1);
                             tr.appendChild(td2);
                             tr.appendChild(td3);
