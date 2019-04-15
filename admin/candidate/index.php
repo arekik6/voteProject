@@ -89,10 +89,22 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                     <td><?=$candidate->lastName?></td>
                     <td><?=$candidate->tel?></td>
 					<td >
-						<button type="button" onclick="window.location.href='<?='./showCandidate.php?id='.$candidate->id ?>'" class="btn btn-success" >show</button>
-                        <button type="button" onclick="window.location.href='<?='./modifyCandidate.php?id='.$candidate->id ?>'" class="btn btn-primary">modify</button>
+                    <table class='buttonsTable'>
+                        <tr>
 
-						<button type="button" onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                            <form action="./showCandidate.php" method="post">
+                                    <button type="submit" name="showID" value="<?=$candidate->id?>" class="btn btn-success">show</button>
+                            </form>
+
+                            <form action="./modifyCandidate.php" method="post">
+                                    <button type="submit" name="modifyID" value="<?=$candidate->id?>" class="btn btn-primary">modify</button>
+                            </form>
+                            <button type="button" onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+
+                        </tr>
+
+                    </table>
+
                 	</td>
 
 
