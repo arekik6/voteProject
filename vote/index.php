@@ -20,10 +20,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             $req->execute(array($election[0]->id));
             $candidates = $req->fetchAll(PDO::FETCH_OBJ);
             ?>
-
+<!-- 
             <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 
             <form id="contact" action="./vote.php" method="post">
             <div class="container">
@@ -47,7 +47,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left">
-                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                <img src="<?=$candidate->img?>" class="media-photo">
                             </a>
                             <div class="media-body">
                                 <!-- <span class="media-meta pull-right">Febrero 13, 2016</span> -->

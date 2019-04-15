@@ -13,9 +13,10 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 				}
 
         ?>
-         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+         <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      -->   
         <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
         <link rel="stylesheet" href="../../assets/css/candidateList.css" crossorigin="anonymous">
 
@@ -23,7 +24,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         
         </script>
         <form name='frmSearch' action='' method='post'>
-				<div style='text-align:right;margin:20px 0px;'><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div>
+				<div id="search" style="text-align:right;margin:20px 20px;" ><input type='text' name='search[keyword]' value="<?= $search_keyword ?>" id='keyword' maxlength='25'></div>
 
         <table class="table">
             <thead>
@@ -78,28 +79,27 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         ?>
 
         <tbody id='table-body'>
-
         <?php
     	if(!empty($result)) { 
-            $j = 1;
             foreach($result as $candidate) {
                 ?>
-                <tr <?= 'id="'.$candidate->id.'" onclick="openUser(this.id,\'./showCandidate.php\')"'?>> 
-                    
+                <tr <?= 'id="'.$candidate->id.'" '?>> 
+
                     <td><?=$candidate->id?></td>
                     <td><?=$candidate->firstName?></td>
                     <td><?=$candidate->lastName?></td>
                     <td><?=$candidate->tel?></td>
-                
-                    
-                    <td>
-                        <button onclick="<?="openUser(".$candidate->id.","."'./modifyCandidate.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
-                        <button onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
-                    </td>
+					<td >
+						<button type="button" onclick="window.location.href='<?='./showCandidate.php?id='.$candidate->id ?>'" class="btn btn-success" >show</button>
+                        <button type="button" onclick="window.location.href='<?='./modifyCandidate.php?id='.$candidate->id ?>'" class="btn btn-primary">modify</button>
+
+						<button type="button" onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                	</td>
+
+
                 </tr>
 
             <?php
-            $j++;
             }
         }
         ?>

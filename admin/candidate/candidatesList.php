@@ -6,11 +6,12 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 	if($_SESSION['role']){
         include '../../includes/header.php';
         ?>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+       <!--  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
-        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     -->
+         <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous"> 
 
         <script src="../lists.js">
         
@@ -37,7 +38,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         $i = 1;
         foreach($candidates as $candidate) {
             ?>
-            <tr <?= 'id="'.$i.'" onclick="openUser(this.id,\'./showCandidate.php\')"'?>> 
+            <tr <?= 'id="'.$candidate->id.'" onclick="openUser(this.id,\'./showCandidate.php\')"'?>> 
                 
                 <td><?=$candidate->id?></td>
                 <td><?=$candidate->firstName?></td>
@@ -46,8 +47,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                
                  
                  <td>
-                     <button onclick="<?="openUser(".$i.","."'./modifyCandidate.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
-                     <button onclick="<?="deleteUser(".$candidate->id.",'candidate',".$i.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
+                     <button onclick="<?="openUser(".$candidate->id.","."'./modifyCandidate.php'".")"?>; event.stopPropagation();" class="btn btn-primary">modify</button>
+                     <button onclick="<?="deleteUser(".$candidate->id.",'candidate',".$candidate->id.")"?>; event.stopPropagation();" class="btn btn-danger">delete</button>
                  </td>
             </tr>
 

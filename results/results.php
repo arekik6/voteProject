@@ -29,15 +29,13 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])) {
     if(count($votes)){
         echo '<h2>Results for '.$votes[0]->nom.' : '.$votes[0]->description.'</h2><br>';
         foreach($votes as $vote){
-           // echo $vote->firstName.' '.$vote->lastName.' : '.$vote->C_description.' got '.$vote->vote_number.' votes <br>';
            ?>
-
                 <tr data-status="pagado">
                    
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left">
-                                <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                                <img src="<?=$candidate->img?>" class="media-photo">
                             </a>
                             <div class="media-body">
                                 <!-- <span class="media-meta pull-right">Febrero 13, 2016</span> -->

@@ -7,7 +7,7 @@ unset($_SESSION["cmodifyId"]);
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
     if($_SESSION['role']){
 
-        $id = $_POST["id"];
+        $id = $_GET["id"];
 
         $req = $bdd->prepare('SELECT * FROM candidate WHERE id=?');
         $req->execute(array($id));
@@ -17,7 +17,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
         include '../../includes/header.php';
         ?>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ -->        
         <link rel="stylesheet" href="../../assets/css/style.css" crossorigin="anonymous">
 
 
