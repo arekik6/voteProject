@@ -4,11 +4,36 @@ $bdd = ConnexionBD::getInstance();
 session_start();
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['role'])) {
 	if($_SESSION['role']){
-        $electionID = $_POST['election'];
-        $req = $bdd->prepare('SELECT * FROM election where id=?');
-            $req->execute(array($electionID));    
-            $election = $req->fetch(PDO::FETCH_OBJ);
+        if(isset($_POST['modifyID'])){
+            $id = $_POST['modifyID'];
+            $req = $bdd->prepare("update election set nom=?,description=? where id=?");
+            $req->execute(array($_POST['first'],$_POST['description'],$id));
 
+            $req = $bdd->prepare("delete from candidate_election where id_Election=?");
+            $req->execute(array($id));
+
+            //var_dump($req);
+
+            $req = $bdd->prepare("select count(*) from candidate;");
+            $req->execute();
+            $res = $req->fetch(PDO::FETCH_ASSOC);
+            $c = $res['count(*)'];
+           
+            for($i=0;$i<$c;$i++){           
+                if(isset($_POST[''.$i])){
+                    
+                    $req = $bdd->prepare("insert into candidate_election (id_Candidate,id_Election,vote_number) values(?,?,0);");
+                    $req->execute(array($_POST[''.$i],$id));
+                }
+            }
+            //echo $i;
+        $electionID = $id;
+        }else{
+        $electionID = $_POST['election'];
+        }
+        $req = $bdd->prepare('SELECT * FROM election where id=?');
+        $req->execute(array($electionID));    
+        $election = $req->fetch(PDO::FETCH_OBJ);
         include '../includes/header.php';
         ?>
         
@@ -39,7 +64,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             ?>
             <div class="form-check">
                 
-                <li><label><?=$candidate->firstName.' '.$candidate->lastName.' : '.$candidate->C_description?></label></li>
+                <li><label><?=$candidate->firstName.' '.$candidate->lastName?></label></li>
             </div>
             
             <?php
