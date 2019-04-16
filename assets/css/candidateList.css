@@ -9,7 +9,7 @@
     border: rgb(255, 252, 252) 1px solid; 
     border-radius: 4px; 
     padding: 7px;
-    background:url("../images/demo-search-icon.png") no-repeat center right 7px;
+    background-image: url("../images/demo-search-icon.png") no-repeat center right 7px;
     margin:20px 20px;
 }
 .btn-page{
