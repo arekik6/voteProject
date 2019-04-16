@@ -39,7 +39,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <button name="election" type="submit" value="<?=$election->id?>" class="btn btn-lg btn-block btn-warning">Go for It!</button>
+                            <button name="election" type="submit" value="<?=$election->id?>" class="btn btn-lg btn-block">vote</button>
                         </div>
                      </div>
                 </div>

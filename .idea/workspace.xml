@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dc605b1-258d-48f6-a8ce-8893b29913de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/admin/candidate/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/candidate/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/candidate/showCandidate.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/candidate/showCandidate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/showElection.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/showElection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/users/showUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users/showUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/users/users_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users/users_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elections.css" beforeDir="false" afterPath="$PROJECT_DIR$/elections.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elections.php" beforeDir="false" afterPath="$PROJECT_DIR$/elections.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -254,16 +251,15 @@
       <workItem from="1555268817484" duration="600000" />
       <workItem from="1555273620182" duration="12297000" />
       <workItem from="1555345043944" duration="3963000" />
-      <workItem from="1555409436896" duration="251000" />
+      <workItem from="1555409436896" duration="850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43582000" />
+    <option name="totallyTimeSpent" value="44181000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

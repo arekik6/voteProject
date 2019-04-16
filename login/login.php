@@ -16,6 +16,7 @@ if(isset($username) && isset($password)) {
     if(count($user)){
         $_SESSION['username'] = $user[0]->email;
         $_SESSION['password'] = $user[0]->password;
+        $_SESSION['firstName'] = $user[0]->firstName;
         $_SESSION['role'] = $user[0]->role;
         $_SESSION['msg'] = 'Welcome '.$user[0]->firstName.' '.$user[0]->lastName;
 
