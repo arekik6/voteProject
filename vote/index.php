@@ -54,7 +54,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                     <td>
                         <div class="media">
                             <a href="#" class="pull-left">
-                                <img src="<?='.'.$candidate->img?>" class="media-photo">
+                                <img widhth="70px" height="70px" src="<?='.'.$candidate->img?>" class="media-photo">
                             </a>
                             <div class="media-body">
                                 <!-- <span class="media-meta pull-right">Febrero 13, 2016</span> -->
@@ -81,14 +81,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                 
             </form>
             <center>
-
-            <form method='post' action='../results/results.php'>
-                <button type="submit" name="election" value="<?=$_POST["election"]?>" id="contact-submit" class="btn btn-success" >RESULTS</button>
-            </form>
+                <form method='post' action='../results/results.php'>
+                    <button type="submit" name="election" value="<?=$_POST["election"]?>" id="contact-submit" class="btn btn-success" >RESULTS</button>
+                </form>
             </center>
 
 
-<?php
+        <?php
 
             }
         }
@@ -96,7 +95,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             ?>
             <center>
                 <h2>Sorry you already voted in this election</h2>
-                <h2>You can ALways see the results : </h2>
+                <h2>You can Always see the results : </h2>
                 <form method='post' action='../results/results.php'>
                     <button type="submit" name="election" value="<?=$_POST["election"]?>" id="contact-submit" class="btn btn-success" >RESULTS</button>
                 </form>
