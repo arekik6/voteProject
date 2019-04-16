@@ -110,7 +110,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `firstName`, `lastName`, `address`, `email`, `password`, `tel`, `role`) VALUES
-(1, 'ahmed', 'rekik', 'sfax', 'arekik6@gmail.com', 'ahmed', '55699881', 0),
+(1, 'ahmed', 'rekik', 'ahmed', 'ahmed', 'ahmed', '55699881', 0),
 (2, 'admin', 'admin', 'amdin', 'admin', 'admin', '55555555', 1);
 
 -- --------------------------------------------------------
@@ -190,15 +190,16 @@ ALTER TABLE `user`
 -- Constraints for table `candidate_election`
 --
 ALTER TABLE `candidate_election`
-  ADD CONSTRAINT `Candidate_Election_fk0` FOREIGN KEY (`id_Candidate`) REFERENCES `candidate` (`id`),
-  ADD CONSTRAINT `Candidate_Election_fk1` FOREIGN KEY (`id_Election`) REFERENCES `election` (`id`);
+  ADD CONSTRAINT `Candidate_Election_fk0` FOREIGN KEY (`id_Candidate`) REFERENCES `candidate` (`id`) on delete cascade,
+  ADD CONSTRAINT `Candidate_Election_fk1` FOREIGN KEY (`id_Election`) REFERENCES `election` (`id`) on delete cascade;
+
 
 --
 -- Constraints for table `vote`
 --
 ALTER TABLE `vote`
-  ADD CONSTRAINT `Vote_fk0` FOREIGN KEY (`id_User`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `Vote_fk1` FOREIGN KEY (`id_Election`) REFERENCES `election` (`id`);
+  ADD CONSTRAINT `Vote_fk0` FOREIGN KEY (`id_User`) REFERENCES `user` (`id`) on delete cascade,
+  ADD CONSTRAINT `Vote_fk1` FOREIGN KEY (`id_Election`) REFERENCES `election` (`id`) on delete cascade;
 COMMIT;
 
 ALTER TABLE `candidate_election`
