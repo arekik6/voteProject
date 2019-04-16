@@ -54,7 +54,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESS
                 <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:black;"><strong><?= $election->nom ?></strong></div>
 
                 <h3>Election description:</h3>
-                <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:black;"><strong><?= $election->description ?></strong></div>
+                <div style="text-align:center;font-size:1.6em;background-color:rgb(244,220,84);color:black;"><strong><?= $election->description ?></strong></div>
 
 
 

@@ -53,7 +53,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         if(isset($_POST["name"]) && isset($_POST["desc"])) {
             $name = $_POST["name"];
             $description = $_POST["desc"];
-            echo $name." ".$description;
+            //echo $name." ".$description;
 
             $req = $bdd->prepare("INSERT INTO election(nom,description) VALUES(?, ?)");
             $req->execute(array($name, $description));
@@ -69,6 +69,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
     
                 }
             }
+            header('Location: ./index.php');
         
 
         }  

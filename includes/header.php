@@ -19,17 +19,15 @@ $root = explode("/", $format_path)[1];
     /*background-color: black;*/
     margin-right:1px; 
   }
-  .colo{
-    background-color: black;
-  }
+  
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#"><?= $_SESSION['firstName'] ?></a>
+  <a class="navbar-brand" href="<?='/'.$root."/"?>"><?= $_SESSION['firstName'] ?></a>
  
-    <div class="collapse navbar-collapse colo" id="navbarTogglerDemo03">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
     <?php
      if ($_SESSION['role']) { ?>
