@@ -68,8 +68,8 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
             $req = $bdd->prepare('INSERT INTO candidate(firstName,lastName,address,email,img,tel,C_description) VALUES(?, ?, ?, ?, ?, ?, ?)');
             $req->execute(array($first, $last,$address, $email, "$uploads_dir/$name", $tel, $description));
-            //header("Location: ./candidatesList.php");
-            echo "Candidate Added Successfully";
+            header("Location ./candidatesList.php");
+            //echo "Candidate Added Successfully";
         }
 
     }

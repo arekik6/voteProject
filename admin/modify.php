@@ -37,17 +37,33 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
                 <p>Candidates List</p>
 
                 <?php
+                function exists($arr,$item){
+                    foreach($arr as $can){ 
+                        if($can->id_Candidate === $item){
+                            return 'checked';
+                        }
+                    }
+                    return '';
+
+                }
+                
                     $req = $bdd->prepare('SELECT * FROM candidate');
                     $req->execute();    
                     $candidates = $req->fetchAll(PDO::FETCH_OBJ);
+                    $req1 = $bdd->prepare('SELECT * FROM candidate_election where id_Election=?');
+                    $req1->execute(array($id));    
+                    $candidates_election = $req1->fetchAll(PDO::FETCH_OBJ);
+                   
+                    $i = 0;
                     foreach($candidates as $candidate) {
                         ?>
                         <div class="form-check">
-                            <input name ="check-list[]" type="checkbox" class="form-check-input" id="materialUnchecked" value=<?=$candidate->id?>>
-                            <label class="form-check-label" for="materialUnchecked"><?=$candidate->firstName.' '.$candidate->lastName.' : '.$candidate->C_description?></label>
+                            <input name ="<?=$i?>" type="checkbox" class="form-check-input" id="materialUnchecked" value=<?=$candidate->id?> <?=exists($candidates_election,$candidate->id)?>>
+                            <label class="form-check-label" for="materialUnchecked"><?=$candidate->firstName.' '.$candidate->lastName?></label>
                         </div>
 
                         <?php
+                        $i++;
                             }
                 ?>
 
@@ -55,7 +71,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
 
 
                 <fieldset>
-                    <button name="submit" type="submit" id="contact-submit" data-submit="...Adding">Submit</button>
+                    <button name="modifyID" value="<?=$id?>" type="submit" id="contact-submit" data-submit="...Adding">Submit</button>
                 </fieldset>
             </form>
         </div>
