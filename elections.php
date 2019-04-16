@@ -1,5 +1,3 @@
-
-
 <?php
 
 require('./conn_db.php');
@@ -8,7 +6,7 @@ $bdd = ConnexionBD::getInstance();
 session_start();
 include './includes/header.php';
 if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSION['msg'])) {
-    echo $_SESSION['msg']."<br/>";
+    echo '<div style="text-align:center;"><h3>'.$_SESSION['msg']."</h3></div>";
    
     $req = $bdd->prepare('SELECT * FROM election');
     $req->execute();
