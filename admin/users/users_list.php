@@ -19,9 +19,9 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
             
         </script>
 
-        <div >
+        <div style="text-align:center;">
 
-        <input style="left:50%;width: 60%;margin: 2px;" type="text" id="myInput" onkeyup="myFunction('./getUsers.php')" placeholder="Search for names.." title="Type in a name">
+        <input style="background:#FFF;left:50%;width: 30%;margin: 2px;" type="text" id="myInput" onkeyup="myFunction('./getUsers.php')" placeholder="Search for names.." title="Type in a name">
         </div>
         <table class="table">
             <thead>

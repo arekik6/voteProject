@@ -41,17 +41,23 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <img widhth="80px" height="80px" src="<?='../.'.$candidate->img?>" alt=""/>
 
     <h3>candidate firstname:</h3>
-        <p><?=$candidate->firstName?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$candidate->firstName?></strong></div>
+        
     <h3>candidate lastName:</h3>
-        <p><?=$candidate->lastName?></p>
-    <h3>candidate address:</h3>
-        <p><?=$candidate->address?></p>
+        
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$candidate->lastName?></strong></div>
+        <h3>candidate address:</h3>
+        <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$candidate->address?></strong></div>
+        
     <h3>candidate email:</h3>
-        <p><?=$candidate->email?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$candidate->email?></strong></div>
+       
     <h3>candidate tel:</h3>
-        <p><?=$candidate->tel?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$candidate->tel?></strong></div>
+        
     <h3>candidate description:</h3>
-        <p><?=$candidate->C_description?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$candidate->C_description?></strong></div>
+        
    
    
     </div>

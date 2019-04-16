@@ -39,24 +39,30 @@ if(isset($_SESSION['username']) && isset($_SESSION['password']) && isset($_SESSI
         <div id="contact">
 
     <h3>user cin:</h3>
-        <p><?=$user->id?></p>
+        <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$user->id?></strong></div>
     <h3>user firstname:</h3>
-        <p><?=$user->firstName?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$user->firstName?></strong></div>
+       
     <h3>user lastName:</h3>
-        <p><?=$user->lastName?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$user->lastName?></strong></div>
+        
     <h3>user address:</h3>
-        <p><?=$user->address?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$user->address?></strong></div>
+        
     <h3>user email:</h3>
-        <p><?=$user->email?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$user->email?></strong></div>
+       
     <h3>user tel:</h3>
-        <p><?=$user->tel?></p>
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong><?=$user->tel?></strong></div>
+       
     <h3>user role:</h3>
-        <p><?php if($user->role){
+    <div style="text-align:center;font-size:2em;background-color:rgb(244,220,84);color:dark;"><strong>
+        <?php if($user->role){
             echo "admin";
         }else{
                 echo "Elector";
             }   
-        ?></p>
+        ?></strong></div>
    
         
         <!-- 

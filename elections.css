@@ -107,3 +107,9 @@
 .bs-calltoaction.bs-calltoaction-danger .cta-button .btn{
     border-color:#fff;
 }
+
+.row-center11{
+    text-align: center;
+    width: 100%;
+    background-color:blue;
+}
